@@ -1,0 +1,30 @@
+.comparison-block {
+    text-align: center;
+}
+
+.comparison-block h4 {
+    margin: 0.25em;
+}
+
+.comparison-progress {
+    display: block;
+    margin-bottom: 1em;
+}
+
+#original-manifest, #destination-manifest {
+    width: 100%;
+    height: 320px;
+}
+
+.mapping-actions {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.mapping-actions li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
