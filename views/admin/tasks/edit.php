@@ -46,7 +46,7 @@ echo flash();
         </form>
         <a href="<?php echo admin_url(array(), 'IiifItemsReannotate_Tasks'); ?>" class="big blue button"><?php echo __("Return to Tasks"); ?></a>
         <form method="POST" action="<?php echo admin_url(array('id' => $task->id), 'IiifItemsReannotate_Tasks_Delete') ?>">
-            <input type="submit" class="big red button" value="<?php echo __("Abandon Job"); ?>">
+            <input id="abandon-job" type="submit" class="big red button" value="<?php echo __("Abandon Job"); ?>">
         </form>
     </div>
 </section>
@@ -84,7 +84,7 @@ echo flash();
                     value: progress,
                     max: progress_max
                 });
-                jQuery('#run-job').attr('disabled', progress === progress_max ? null : 'disabled');
+                jQuery('#run-job').attr('disabled', progress != 0 ? null : 'disabled');
             },
             updatePageNumbers = function () {
                 jQuery('#source-progress').html((source_num + 1) + "/" + source_ids.length);
@@ -149,6 +149,17 @@ echo flash();
             updatePageNumbers();
         }).fail(function() {
             alert('Cannot initialize reannotation session. Please refresh.');
+        });
+        
+        jQuery('#run-job').click(function() {
+            if (progress < progress_max && !confirm("There are still unmapped images. Continue?")) {
+                return false;
+            }
+            return true;
+        });
+        
+        jQuery('#abandon-job').click(function() {
+            return confirm("Are you sure that you want to abandon this job? You will lose all saved progress if you do.");
         });
         
         jQuery('#original-manifest, #destination-manifest').on('load', function() {

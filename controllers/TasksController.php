@@ -84,11 +84,6 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
         
         // POST: Check submission, then start the job if it's OK
         if ($this->getRequest()->isPost()) {
-            // Check that the set of mappings is complete
-            if ($task->countMappings() != $task->countMaxMappings()) {
-                $this->_helper->_flashMessenger(__('There are still unmapped source canvases. Please map or pass them and retry.'), 'error');
-                return;
-            }
             // Start the job
             $newJobStatusId = get_db()->insert('IiifItemsReannotate_Status', array(
                 'source' => $task->name,
