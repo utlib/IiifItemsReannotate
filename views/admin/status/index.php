@@ -26,8 +26,10 @@ include __DIR__ . '/../../helpers/nav.php';
     </thead>
     <tbody>
         
+<?php $statusIds = array(); ?>
 <?php foreach ($statuses as $status): ?>
-    <tr>
+    <?php $statusIds[] = $status->id; ?>
+    <tr id="status-<?php echo $status->id; ?>">
         <td><?php echo html_escape($status->source); ?></td>
         <td><?php echo $status->dones; ?></td>
         <td><?php echo $status->skips; ?></td>
@@ -41,5 +43,27 @@ include __DIR__ . '/../../helpers/nav.php';
 <?php echo pagination_links(); ?>
 <?php endif; ?>
 
+<script>
+jQuery(function() {
+    var ids = <?php echo json_encode($statusIds); ?>;
+    if (ids) {
+        setInterval(function() {
+            jQuery.get(
+                <?php echo js_escape(admin_url(array(), 'IiifItemsReannotate_AjaxStatus')); ?>,
+                { id: ids }
+            ).done(function(data) {
+                jQuery.each(data, function(_, entry) {
+                    var jqrow = jQuery('#status-' + entry.id);
+                    jqrow.find('td:nth-child(2)').html(entry.dones);
+                    jqrow.find('td:nth-child(3)').html(entry.skips);
+                    jqrow.find('td:nth-child(4)').html(entry.fails);
+                    jqrow.find('td:nth-child(6)').html(entry.status);
+                });
+            });
+        }, 2000);
+    }
+});
+</script>
+    
 </div>
 <?php echo foot();

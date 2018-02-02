@@ -42,4 +42,22 @@ class IiifItemsReannotate_StatusController extends IiifItemsReannotate_Applicati
             ));
         }
     }
+    
+    public function ajaxStatusAction() {
+        $this->restrictVerb('GET');
+        $jsonData = array();
+        if ($ids = $this->_getParam('id')) {
+            $statuses = $this->_helper->db->getTable('IiifItemsReannotate_Status')->findBy(array('id' => $ids));
+            foreach ($statuses as $status) {
+                $jsonData[] = array(
+                    'id' => $status->id,
+                    'dones' => $status->dones,
+                    'skips' => $status->skips,
+                    'fails' => $status->fails,
+                    'status' => $status->status,
+                );
+            }
+        }
+        $this->respondWithJson($jsonData, 200);
+    }
 }
