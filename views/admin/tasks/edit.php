@@ -11,8 +11,8 @@ echo flash();
 
 <section class="eight columns alpha">
     <div class="row">
-        <div class="one columns alpha" id="progress-counter">0 / 0</div>
-        <progress max="0" value="0" class="seven columns omega" id="progress-bar"></progress>
+        <div class="two columns alpha">Images Mapped: <span id="progress-counter">0 / 0</span></div>
+        <progress max="0" value="0" class="six columns omega" id="progress-bar"></progress>
     </div>
     <div class="row">
         <div class="four columns alpha comparison-block">
