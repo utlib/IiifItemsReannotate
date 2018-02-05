@@ -6,12 +6,11 @@ include __DIR__ . '/../../helpers/nav.php';
 echo flash();
 ?>
 <link rel="stylesheet" href="<?php echo src('main', 'css', 'css'); ?>">
-
-<h2><?php echo __("Remap Annotations"); ?>: <?php echo html_escape($task->name); ?></h2>
-
 <section class="eight columns alpha">
+    <h2><?php echo __("Remap Annotations"); ?>: <?php echo html_escape($task->name); ?></h2>
+    <p><?php echo __("Please select corresponding reference areas from the source and target canvases. All annotations on the source canvas will be scaled and moved relative to the reference areas, and then copied to the target canvas."); ?></p>
     <div class="row">
-        <div class="two columns alpha">Images Mapped: <span id="progress-counter">0 / 0</span></div>
+        <div class="two columns alpha"><?php echo __("Images Mapped:"); ?> <span id="progress-counter">0 / 0</span></div>
         <progress max="0" value="0" class="six columns omega" id="progress-bar"></progress>
     </div>
     <div class="row">

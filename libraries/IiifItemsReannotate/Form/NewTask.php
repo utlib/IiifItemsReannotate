@@ -24,14 +24,14 @@ class IiifItemsReannotate_Form_NewTask extends Omeka_Form {
         // Source
         $this->addElement('select', 'task_source', array(
             'label' => __("Source"),
-            'description' => __("The source manifest for this remapping task."),
+            'description' => __("The source image(s) for this remapping task."),
             'multiOptions' => get_table_options('Collection'),
             'required' => true,
         ));
         // Target
         $this->addElement('select', 'task_target', array(
             'label' => __("Target"),
-            'description' => __("The target manifest for this remapping task."),
+            'description' => __("The target image(s) for this remapping task."),
             'multiOptions' => get_table_options('Collection'),
             'required' => true,
         ));

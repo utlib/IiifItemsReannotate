@@ -41,7 +41,7 @@ echo flash();
         </td>
         <td><?php echo $task->countMappings(); ?>/<?php echo $task->countMaxMappings(); ?></td>
         <td><?php $source = $task->getSourceCollection(); ?><a href="<?php echo admin_url(array('id' => $source->id, 'controller' => 'collections', 'action' => 'show'), 'id'); ?>"><?php echo metadata($source, array('Dublin Core', 'Title')); ?></a></td>
-        <td><?php $target = $task->getSourceCollection(); ?><a href="<?php echo admin_url(array('id' => $target->id, 'controller' => 'collections', 'action' => 'show'), 'id'); ?>"><?php echo metadata($target, array('Dublin Core', 'Title')); ?></a></td>
+        <td><?php $target = $task->getTargetCollection(); ?><a href="<?php echo admin_url(array('id' => $target->id, 'controller' => 'collections', 'action' => 'show'), 'id'); ?>"><?php echo metadata($target, array('Dublin Core', 'Title')); ?></a></td>
         <td><?php echo format_date($task->created); ?></td>
     </tr>
 <?php endforeach; ?>
