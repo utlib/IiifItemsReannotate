@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Translations for the IIIF Toolkit Annotation Remapper "
+"Plugin for Omeka Classic 2.x\n"
+"POT-Creation-Date: 2018-04-02 17:01-0500\n"
+"PO-Revision-Date: 2018-04-02 17:01-0500\n"
+"Last-Translator: Dickson Law <dickson.law@utoronto.ca>\n"
+"Language-Team: University of Toronto Libraries <exhibits@library.utoronto."
+"ca>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;plural:1,2\n"
+"X-Poedit-Basepath: /home/developer/IiifItemsReannotate\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: IiifItemsReannotatePlugin.php:138 views/admin/status/index.php:3
+#: views/admin/tasks/new.php:3 views/admin/tasks/index.php:3
+#: views/admin/tasks/edit.php:3
+msgid "Annotation Remapper"
+msgstr ""
+
+#: views/helpers/nav.php:5
+msgid "Tasks"
+msgstr ""
+
+#: views/helpers/nav.php:9 views/admin/status/index.php:23
+msgid "Status"
+msgstr ""
+
+#: views/admin/status/index.php:8
+msgid "Status Panel"
+msgstr ""
+
+#: views/admin/status/index.php:18
+msgid "Task"
+msgstr ""
+
+#: views/admin/status/index.php:19
+msgid "Done"
+msgstr ""
+
+#: views/admin/status/index.php:20
+msgid "Skipped"
+msgstr ""
+
+#: views/admin/status/index.php:21
+#: libraries/IiifItemsReannotate/Job/Remap.php:249
+msgid "Failed"
+msgstr ""
+
+#: views/admin/status/index.php:22 views/admin/tasks/index.php:31
+msgid "Date"
+msgstr ""
+
+#: views/admin/tasks/new.php:9
+msgid "New Remap Task"
+msgstr ""
+
+#: views/admin/tasks/index.php:10
+msgid "There are annotation remapping tasks yet."
+msgstr ""
+
+#: views/admin/tasks/index.php:12 views/admin/tasks/index.php:18
+msgid "Start New Task"
+msgstr ""
+
+#: views/admin/tasks/index.php:16
+msgid "Remap Tasks"
+msgstr ""
+
+#: views/admin/tasks/index.php:27
+msgid "Title"
+msgstr ""
+
+#: views/admin/tasks/index.php:28
+msgid "Mappings"
+msgstr ""
+
+#: views/admin/tasks/index.php:29
+#: libraries/IiifItemsReannotate/Form/NewTask.php:26
+msgid "Source"
+msgstr ""
+
+#: views/admin/tasks/index.php:30
+#: libraries/IiifItemsReannotate/Form/NewTask.php:33
+msgid "Target"
+msgstr ""
+
+#: views/admin/tasks/edit.php:10
+msgid "Remap Annotations"
+msgstr ""
+
+#: views/admin/tasks/edit.php:11
+msgid ""
+"Please select corresponding reference areas from the source and target "
+"canvases. All annotations on the source canvas will be scaled and moved "
+"relative to the reference areas, and then copied to the target canvas."
+msgstr ""
+
+#: views/admin/tasks/edit.php:13
+msgid "Images Mapped:"
+msgstr ""
+
+#: views/admin/tasks/edit.php:23
+msgid "Pass"
+msgstr ""
+
+#: views/admin/tasks/edit.php:24
+msgid "Confirm"
+msgstr ""
+
+#: views/admin/tasks/edit.php:25
+msgid "Reset"
+msgstr ""
+
+#: views/admin/tasks/edit.php:46
+msgid "Return to Tasks"
+msgstr ""
+
+#: views/admin/tasks/edit.php:48
+msgid "Abandon Job"
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Form/NewTask.php:20
+msgid "Name"
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Form/NewTask.php:21
+msgid "The name for this remapping task."
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Form/NewTask.php:27
+msgid "The source image(s) for this remapping task."
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Form/NewTask.php:34
+msgid "The target image(s) for this remapping task."
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Job/Remap.php:107
+msgid "In Progress"
+msgstr ""
+
+#: libraries/IiifItemsReannotate/Job/Remap.php:245
+msgid "Completed"
+msgstr ""
+
+#: controllers/TasksController.php:58
+msgid "There was an error on the form. Please try again."
+msgstr ""
+
+#: controllers/TasksController.php:143
+msgid "Task deleted."
+msgstr ""
