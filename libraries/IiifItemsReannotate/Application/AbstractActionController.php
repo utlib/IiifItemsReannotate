@@ -7,7 +7,7 @@
 abstract class IiifItemsReannotate_Application_AbstractActionController extends Omeka_Controller_AbstractActionController {
     /**
      * Return a database selector for the given model, with current pagination parameters.
-     * 
+     *
      * @param string $modelName Name of the model
      * @return Omeka_Db_Select
      */
@@ -22,10 +22,10 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
         $this->_helper->db->applyPagination($select, $recordsPerPage, $currentPage);
         return $select;
     }
-    
+
     /**
      * Return a list of models with current pagination parameters.
-     * 
+     *
      * @param string $modelName Name of the model
      * @return Omeka_Record_AbstractRecord[]
      */
@@ -33,10 +33,10 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
         $select = $this->getPaginatedModelSelect($modelName);
         return $this->_helper->db->getTable($modelName)->fetchObjects($select);
     }
-    
+
     /**
      * Respond with JSON data (no layout).
-     * 
+     *
      * @param array $jsonData JSON data in nested array form
      * @param integer $status The HTTP response code
      */
@@ -52,7 +52,7 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
 
     /**
      * Respond with raw data.
-     * 
+     *
      * @param string $data Response data
      * @param integer $status The HTTP response code
      * @param string $mime The MIME type
@@ -70,7 +70,7 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
     /**
      * Encodes the argument in JSON.
      * Adds the unescaped slashes and unicode argument on PHP 5.4.0+
-     * 
+     *
      * @param mixed $mixed
      * @return array
      */
@@ -79,20 +79,20 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
             ? \json_encode($mixed)
             : \json_encode($mixed, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
-    
+
     /**
      * Decodes the given JSON string to an associative array.
-     * 
+     *
      * @param string $str
      * @return array
      */
     protected function json_decode($str) {
         return \json_decode($str, false);
     }
-    
+
     /**
      * Call this at the beginning of a controller action method to block unauthenticated users.
-     * 
+     *
      * @throws Omeka_Controller_Exception_404
      */
     protected function blockPublic() {
@@ -100,10 +100,10 @@ abstract class IiifItemsReannotate_Application_AbstractActionController extends 
             throw new Omeka_Controller_Exception_404;
         }
     }
-    
+
     /**
      * Call this at the beginning of a controller action to block requests not made with the specified verb.
-     * 
+     *
      * @param string|string[] $verbAllowed The allowed HTTP verb(s)
      * @throws Omeka_Controller_Exception_404
      */

@@ -20,7 +20,7 @@ class IiifItemsReannotate_CropperController extends IiifItemsReannotate_Applicat
         if (isset($_GET['task']) && !($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('task'))) && array_search($side, array('s', 't', '')) === false) {
             throw new Omeka_Controller_Exception_404;
         }
-        
+
         // Display the correct coloured selector frame
         switch ($this->getParam('status')) {
             case 'confirmed': $selectorColour = 'green'; break;
@@ -28,7 +28,7 @@ class IiifItemsReannotate_CropperController extends IiifItemsReannotate_Applicat
             case '': $selectorColour = 'white'; break;
             default: throw new Omeka_Controller_Exception_404;
         }
-        
+
         // Find the mapping and set the selector frame to its specified region
         $mapping = $task ? get_db()->getTable('IiifItemsReannotate_Mapping')->findBySql('task_id = ? AND ' . (($side == 's') ? 'source_item_id = ?' : 'target_item_id = ?'), array($task->id, $item->id), true) : null;
         $this->view->item = $item;

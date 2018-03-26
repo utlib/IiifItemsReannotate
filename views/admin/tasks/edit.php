@@ -108,7 +108,7 @@ echo flash();
                         jQuery('#mapping-confirm').attr('disabled', true);
                         jQuery('#mapping-reset').attr('disabled', null);
                     }
-                    
+
                 } else {
                     map_status = 'normal';
                     if (defaultSourceItemId !== null && defaultSourceItemId !== undefined) {
@@ -133,7 +133,7 @@ echo flash();
             cropperUrl = function(itemId, opts) {
                 return '../../items/' + itemId + '/cropper' + (opts ? ('?' + jQuery.param(opts)) : '');
             };
-            
+
         jQuery.ajax({
             url: 'info',
             data: {
@@ -149,23 +149,23 @@ echo flash();
         }).fail(function() {
             alert('Cannot initialize reannotation session. Please refresh.');
         });
-        
+
         jQuery('#run-job').click(function() {
             if (progress < progress_max && !confirm("There are still unmapped images. Continue?")) {
                 return false;
             }
             return true;
         });
-        
+
         jQuery('#abandon-job').click(function() {
             return confirm("Are you sure that you want to abandon this job? You will lose all saved progress if you do.");
         });
-        
+
         jQuery('#original-manifest, #destination-manifest').on('load', function() {
             toggleNavigators();
             updatePageNumbers();
         });
-        
+
         jQuery('#mapping-confirm').click(function() {
             // Capture IIIF areas
             recordLastRegions();
@@ -232,7 +232,7 @@ echo flash();
                 alert('Reset failed.');
             });
         });
-        
+
         jQuery('#source-prev').click(function() {
             if (source_num > 0) {
                 recordLastRegions();

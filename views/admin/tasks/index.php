@@ -11,7 +11,7 @@ echo flash();
     <?php if (true || is_allowed('IiifItemsReannotate_Tasks','add')): ?>
         <a href="<?php echo admin_url(array(), 'IiifItemsReannotate_Tasks_New') ?>" class="big green add button"><?php echo __("Start New Task") ?></a>
     <?php endif; ?>
-    
+
 <?php else: ?>
 <h2><?php echo __("Remap Tasks"); ?></h2>
 <div class="table-actions">
@@ -33,7 +33,7 @@ echo flash();
     </tr>
     </thead>
     <tbody>
-        
+
 <?php foreach($tasks as $key=>$task): ?>
     <tr>
         <td>

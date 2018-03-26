@@ -5,7 +5,7 @@ echo head(array(
 include __DIR__ . '/../../helpers/nav.php';
 ?>
 <div id="primary">
-<h2><?php echo __('Status Panel'); ?></h2>  
+<h2><?php echo __('Status Panel'); ?></h2>
 <?php if (empty($statuses)): ?>
     <p>No tasks have been run yet.</p>
 <?php else: ?>
@@ -25,7 +25,7 @@ include __DIR__ . '/../../helpers/nav.php';
     </tr>
     </thead>
     <tbody>
-        
+
 <?php $statusIds = array(); ?>
 <?php foreach ($statuses as $status): ?>
     <?php $statusIds[] = $status->id; ?>
@@ -64,6 +64,6 @@ jQuery(function() {
     }
 });
 </script>
-    
+
 </div>
 <?php echo foot();

@@ -3,7 +3,7 @@
  * Main plugin class for the reannotator.
  */
 class IiifItemsReannotatePlugin extends Omeka_Plugin_AbstractPlugin {
-    
+
     /**
      * List of hooks used by this plugin.
      * @var array
@@ -22,13 +22,13 @@ class IiifItemsReannotatePlugin extends Omeka_Plugin_AbstractPlugin {
     protected $_filters = array(
         'admin_navigation_main',
     );
-    
+
     /**
      * Hook: Installation
      * Add database and option entries associated with this plugin.
      */
     public function hookInstall() {
-    	$db = $this->_db;
+        $db = $this->_db;
         // Tasks table
         $db->query("CREATE TABLE IF NOT EXISTS {$db->prefix}iiif_items_reannotate_tasks (
             id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -86,11 +86,11 @@ class IiifItemsReannotatePlugin extends Omeka_Plugin_AbstractPlugin {
     /**
      * Hook: Update
      * Sequentially pull migrations to update database and option entries.
-     * 
+     *
      * @param array $args
      */
     public function hookUpgrade($args) {
-    	$oldVersion = $args['old_version'];
+        $oldVersion = $args['old_version'];
         $newVersion = $args['new_version'];
         $doMigrate = false;
 
@@ -118,17 +118,17 @@ class IiifItemsReannotatePlugin extends Omeka_Plugin_AbstractPlugin {
     /**
      * Hook: Define routes
      * Add plugin-specific routes.
-     * 
+     *
      * @param array $args
      */
     public function hookDefineRoutes($args) {
         $args['router']->addConfig(new Zend_Config_Ini(dirname(__FILE__) . '/routes.ini', 'admin_routes'));
     }
-    
+
     /**
      * Filter: Entries in the main admin navigation.
      * Add navigation link to the annotation remapper task and status screen.
-     * 
+     *
      * @param array $nav
      * @return array
      */

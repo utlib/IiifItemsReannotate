@@ -2,18 +2,18 @@
 
 class IiifItemsReannotate_Job_Remap extends Omeka_Job_AbstractJob {
     private $_status , $_task, $_rootUrl;
-    
+
     public function __construct(array $options) {
         parent::__construct($options);
         $this->_status = $options['statusId'];
         $this->_task = $options['taskId'];
         $this->_rootUrl = $options['rootUrl'];
     }
-    
+
     protected function relerp($oldMin, $oldMax, $x, $newMin, $newMax) {
         return $newMin + (($x - $oldMin) * ($newMax - $newMin)) / ($oldMax - $oldMin);
     }
-    
+
     protected function raw_iiif_metadata($record, $optionSlug) {
         if ($elementText = get_db()->getTable('ElementText')->findBySql('element_texts.element_id = ? AND element_texts.record_type = ? AND element_texts.record_id = ?', array(get_option($optionSlug), get_class($record), $record->id), true)) {
             return $elementText->text;
@@ -21,7 +21,7 @@ class IiifItemsReannotate_Job_Remap extends Omeka_Job_AbstractJob {
             return '';
         }
     }
-    
+
     protected function buildAnnotation($annoItem) {
         $elementTextTable = get_db()->getTable('ElementText');
         $currentAnnotationJson = json_decode($elementTextTable->findBySql("element_texts.element_id = ? AND element_texts.record_type = 'Item' AND element_texts.record_id = ?", array(
@@ -97,7 +97,7 @@ class IiifItemsReannotate_Job_Remap extends Omeka_Job_AbstractJob {
         }
         return $currentAnnotationJson;
     }
-    
+
     public function perform() {
         // For each mapping
         try {
@@ -131,7 +131,7 @@ class IiifItemsReannotate_Job_Remap extends Omeka_Job_AbstractJob {
                         } else {
                             list($wori, $hori) = getimagesize(FILES_DIR . DIRECTORY_SEPARATOR . $sourceItem->getFile()->getStoragePath());
                         }
-                        
+
                         $destinationItem = $mapping->getTargetItem();
                         if ($destinationItemJsonStr = $this->raw_iiif_metadata($destinationItem, 'iiifitems_item_json_element')) {
                             $cnv = json_decode($destinationItemJsonStr, true);
@@ -141,7 +141,7 @@ class IiifItemsReannotate_Job_Remap extends Omeka_Job_AbstractJob {
                             list($wdest, $hdest) = getimagesize(FILES_DIR . DIRECTORY_SEPARATOR . $destinationItem->getFile()->getStoragePath());
                         }
                         $matrix = array($wtgt / $wsrc, 0, 0, $htgt / $hsrc, ($xtgt/$wtgt - $xsrc/$wsrc) *  $wtgt, ($ytgt/$htgt - $ysrc/$hsrc) * $htgt);
-                        
+
                         debug("Found " . count(IiifItems_Util_Annotation::findAnnotationItemsUnder($mapping->getSourceItem())) . " annotations to map");
                         foreach (IiifItems_Util_Annotation::findAnnotationItemsUnder($mapping->getSourceItem()) as $oldAnnotation) {
                             // Calculate the new xywh bounds (if applicable) using linear reinterpolation

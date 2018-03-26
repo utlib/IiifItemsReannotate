@@ -10,31 +10,31 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
      * @var int
      */
     public $id;
-    
+
     /**
      * The name for this remapping task.
      * @var string
      */
     public $name;
-    
+
     /**
      * The ID of the source collection.
      * @var int
      */
     public $source_collection_id;
-    
+
     /**
      * The ID of the target collection.
      * @var int
      */
     public $target_collection_id;
-    
+
     /**
      * The time when the task was created.
      * @var datetime
      */
     public $created;
-    
+
     /**
      * Return the source collection.
      * @return Collection
@@ -42,7 +42,7 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
     public function getSourceCollection() {
         return get_record_by_id('Collection', $this->source_collection_id);
     }
-    
+
     /**
      * Return the target collection.
      * @return Collection
@@ -50,7 +50,7 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
     public function getTargetCollection() {
         return get_record_by_id('Collection', $this->target_collection_id);
     }
-    
+
     /**
      * Return the first item from the source that has not been mapped or passed.
      * @return Item
@@ -70,7 +70,7 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
             return $itemTable->fetchObject($select);
         }
     }
-    
+
     /**
      * Return the first item from the target that has not been mapped or passed.
      * @return Item
@@ -90,7 +90,7 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
             return $itemTable->fetchObject($select);
         }
     }
-    
+
     /**
      * Count the number of mappings/passes that this task already has.
      * @return int
@@ -98,7 +98,7 @@ class IiifItemsReannotate_Task extends Omeka_Record_AbstractRecord {
     public function countMappings() {
         return get_db()->getTable('IiifItemsReannotate_Mapping')->count(array('task_id' => $this->id));
     }
-    
+
     /**
      * Count the number of mappings/passes that this task can have when fully mapped.
      * @return int

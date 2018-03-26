@@ -10,14 +10,14 @@ class IiifItemsReannotate_StatusController extends IiifItemsReannotate_Applicati
      * @var int
      */
     protected $_browseRecordsPerPage = self::RECORDS_PER_PAGE_SETTING;
-    
+
     /**
      * Mark the default model type for this controller.
      */
     public function init() {
-        $this->_helper->db->setDefaultModelName('IiifItemsReannotate_Status');     
+        $this->_helper->db->setDefaultModelName('IiifItemsReannotate_Status');
     }
-    
+
     /**
      * The status listings path.
      */
@@ -36,13 +36,13 @@ class IiifItemsReannotate_StatusController extends IiifItemsReannotate_Applicati
         // Add pagination data to the registry. Used by pagination_links().
         if ($recordsPerPage) {
             Zend_Registry::set('pagination', array(
-                'page' => $currentPage, 
-                'per_page' => $recordsPerPage, 
-                'total_results' => $table->count(), 
+                'page' => $currentPage,
+                'per_page' => $recordsPerPage,
+                'total_results' => $table->count(),
             ));
         }
     }
-    
+
     public function ajaxStatusAction() {
         $this->restrictVerb('GET');
         $jsonData = array();

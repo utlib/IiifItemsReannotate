@@ -75,7 +75,7 @@
 	var ee =                   __webpack_require__(2),
 	    SelectionDOMRenderer = __webpack_require__(17),
 	    TransformSelection =   __webpack_require__(22),
-	    Selection =            __webpack_require__(24) 
+	    Selection =            __webpack_require__(24)
 
 	// This is a factory, not a constructor.
 	// The API is designed so that it is only

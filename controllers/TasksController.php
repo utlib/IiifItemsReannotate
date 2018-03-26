@@ -10,14 +10,14 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
      * @var int
      */
     protected $_browseRecordsPerPage = self::RECORDS_PER_PAGE_SETTING;
-    
+
     /**
      * Mark the default model type for this controller.
      */
     public function init() {
-        $this->_helper->db->setDefaultModelName('IiifItemsReannotate_Task');     
+        $this->_helper->db->setDefaultModelName('IiifItemsReannotate_Task');
     }
-    
+
     /**
      * The task listings path.
      */
@@ -36,20 +36,20 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
         // Add pagination data to the registry. Used by pagination_links().
         if ($recordsPerPage) {
             Zend_Registry::set('pagination', array(
-                'page' => $currentPage, 
-                'per_page' => $recordsPerPage, 
-                'total_results' => $table->count(), 
+                'page' => $currentPage,
+                'per_page' => $recordsPerPage,
+                'total_results' => $table->count(),
             ));
         }
     }
-    
+
     /**
      * Path for creating a new task.
      */
     public function newAction() {
         // GET = Go to form / POST = Process form data
         $this->restrictVerb(array('GET', 'POST'));
-        
+
         // POST: Process form data
         if ($this->getRequest()->isPost()) {
             $form = new IiifItemsReannotate_Form_NewTask();
@@ -70,7 +70,7 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
             }
         }
     }
-    
+
     /**
      * Path for working on a task.
      * @throws Omeka_Controller_Exception_404
@@ -81,7 +81,7 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
         if (!($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('id')))) {
             throw new Omeka_Controller_Exception_404;
         }
-        
+
         // POST: Check submission, then start the job if it's OK
         if ($this->getRequest()->isPost()) {
             // Start the job
@@ -104,7 +104,7 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
             Zend_Controller_Action_HelperBroker::getStaticHelper('redirector')->gotoUrl(absolute_url(array(), 'IiifItemsReannotate_Status'));
             return;
         }
-        
+
         // Standard view locals
         $this->view->task = $task;
         $this->view->sourceCollection = $task->getSourceCollection();
@@ -126,7 +126,7 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
         $jumpToTarget = $task->getTodoTargetItem();
         $this->view->todoTargetItem = $jumpToTarget;
     }
-        
+
     /**
      * Processing path for deleting a task.
      * @throws Omeka_Controller_Exception_404
@@ -137,7 +137,7 @@ class IiifItemsReannotate_TasksController extends IiifItemsReannotate_Applicatio
         if (!($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('id')))) {
             throw new Omeka_Controller_Exception_404;
         }
-        
+
         // Delete the task and show notification
         $task->delete();
         $this->_helper->_flashMessenger(__('Task deleted.'), 'success');

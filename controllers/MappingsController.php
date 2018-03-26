@@ -38,7 +38,7 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
             return false;
         }
     }
-    
+
     public function passAction() {
         $this->restrictVerb('POST');
         if (!($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('id')))) {
@@ -76,7 +76,7 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
             return false;
         }
     }
-    
+
     public function resetAction() {
         $this->restrictVerb('POST');
         if (!($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('id')))) {
@@ -103,7 +103,7 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
             return false;
         }
     }
-    
+
     public function infoAction() {
         $this->restrictVerb('GET');
         if (($task = get_db()->getTable('IiifItemsReannotate_Task')->find($this->getParam('id'))) === null || ($srcId = $this->getParam('src')) === null) {
@@ -121,7 +121,7 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
             return false;
         }
     }
-    
+
     protected function _templateReply($task, $mapping=null, $nextMapping=null) {
         $maps = $task->countMappings();
         $maxMaps = $task->countMaxMappings();
@@ -131,18 +131,18 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
         } else {
             if ($mapping->target_item_id === null) {
                 $mapSource = array(
-                    'id' => $mapping->source_item_id, 
+                    'id' => $mapping->source_item_id,
                     'existing' => false,
                 );
                 $mapTarget = null;
             } else {
                 $mapSource = array(
-                    'id' => $mapping->source_item_id, 
+                    'id' => $mapping->source_item_id,
                     'existing' => true,
                     'xywh' => array($mapping->source_x, $mapping->source_y, $mapping->source_w, $mapping->source_h)
                 );
                 $mapTarget = array(
-                    'id' => $mapping->target_item_id, 
+                    'id' => $mapping->target_item_id,
                     'existing' => true,
                     'xywh' => array($mapping->target_x, $mapping->target_y, $mapping->target_w, $mapping->target_h)
                 );
@@ -154,18 +154,18 @@ class IiifItemsReannotate_MappingsController extends IiifItemsReannotate_Applica
         } else {
             if ($nextMapping->target_item_id === null) {
                 $nextMapSource = array(
-                    'id' => $nextMapping->source_item_id, 
+                    'id' => $nextMapping->source_item_id,
                     'existing' => false,
                 );
                 $nextMapTarget = null;
             } else {
                 $nextMapSource = array(
-                    'id' => $nextMapping->source_item_id, 
+                    'id' => $nextMapping->source_item_id,
                     'existing' => true,
                     'xywh' => array($nextMapping->source_x, $nextMapping->source_y, $nextMapping->source_w, $nextMapping->source_h)
                 );
                 $nextMapTarget = array(
-                    'id' => $nextMapping->target_item_id, 
+                    'id' => $nextMapping->target_item_id,
                     'existing' => true,
                     'xywh' => array($nextMapping->target_x, $nextMapping->target_y, $nextMapping->target_w, $nextMapping->target_h)
                 );
